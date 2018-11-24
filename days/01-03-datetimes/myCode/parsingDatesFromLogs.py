@@ -8,7 +8,7 @@ import os
 SHUTDOWN_EVENT = 'Shutdown initiated'
 
 # prep: read in the logfile
-logfile = os.path.join('/tmp', 'log')
+logfile = os.path.join('tmp', 'log')
 # urllib.request.urlretrieve('http://bit.ly/2AKSIbf', logfile) # Not necessary for the local version
 
 with open(logfile) as f:
