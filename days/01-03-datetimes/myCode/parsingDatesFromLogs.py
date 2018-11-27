@@ -15,8 +15,8 @@ with open(logfile) as f:
     loglines = f.readlines()
 
 # Quick test to see if the log file is being read properly. Comment it out for the webversion
-for line in loglines:
-    print(line)
+# for line in loglines:
+#     print(line)
 
 # for you to code:
 
@@ -27,8 +27,16 @@ def convert_to_datetime(line):
        INFO 2014-07-03T23:27:51 supybot Shutdown complete.
        returns:
        datetime(2014, 7, 3, 23, 27, 51)'''
-    pass
+    blankIndex1 = line.find(" ")
+    blankIndex2 = line[blankIndex1 + 1:].find(" ") + blankIndex1 + 1
+    print(blankIndex1, blankIndex2)
+    timeString = line[blankIndex1 + 1:blankIndex2]
+    # print(timeString) 
 
+# Quick test to see if the times are being extracted correctly
+for line in loglines:
+    print(line)
+    convert_to_datetime(line)
 
 def time_between_shutdowns(loglines):
     '''TODO 2:
