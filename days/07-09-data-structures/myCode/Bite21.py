@@ -48,9 +48,13 @@ def get_all_matching_models(cars=cars, grep='trail'):
                 matchList.append(model)
     return matchList
 
-print(get_all_matching_models())
+# print(get_all_matching_models())
 
 
 def sort_car_models(cars=cars):
     """sort the car models (values) and return the resulting cars dict"""
-    pass
+    for models in cars.values():
+        models.sort()
+    return cars
+
+print(sort_car_models())
