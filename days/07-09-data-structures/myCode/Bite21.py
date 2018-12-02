@@ -1,3 +1,5 @@
+import re #Import regex for case insenstive search
+
 cars = {
     'Ford': ['Falcon', 'Focus', 'Festiva', 'Fairlane'],
     'Holden': ['Commodore', 'Captiva', 'Barina', 'Trailblazer'],
@@ -20,18 +22,33 @@ def get_all_jeeps(cars=cars):
         carString+=jeep+", "
     return carString[:-2]
 
-print(get_all_jeeps())
+# print(get_all_jeeps())
+
+# Testing
+# for models in cars.values():
+#     print(models)
 
 def get_first_model_each_manufacturer(cars=cars):
     """return a list of matching models (original ordering)"""
-    pass
+    firstModels=[]
+    for models in cars.values():
+        firstModels.append(models[0])
+    return firstModels
 
+# print(get_first_model_each_manufacturer())
 
 def get_all_matching_models(cars=cars, grep='trail'):
     """return a list of all models containing the case insensitive
        'grep' string which defaults to 'trail' for this exercise,
        sort the resulting sequence alphabetically"""
-    pass
+    matchList = []
+    for models in cars.values():
+        for model in models:
+            if re.search(grep,model,re.IGNORECASE):
+                matchList.append(model)
+    return matchList
+
+print(get_all_matching_models())
 
 
 def sort_car_models(cars=cars):
