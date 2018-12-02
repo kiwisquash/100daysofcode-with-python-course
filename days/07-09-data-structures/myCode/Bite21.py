@@ -22,7 +22,7 @@ def get_all_jeeps(cars=cars):
         carString+=jeep+", "
     return carString[:-2]
 
-# print(get_all_jeeps())
+print(get_all_jeeps())
 
 # Testing
 # for models in cars.values():
@@ -35,7 +35,7 @@ def get_first_model_each_manufacturer(cars=cars):
         firstModels.append(models[0])
     return firstModels
 
-# print(get_first_model_each_manufacturer())
+print(get_first_model_each_manufacturer())
 
 def get_all_matching_models(cars=cars, grep='trail'):
     """return a list of all models containing the case insensitive
@@ -48,8 +48,8 @@ def get_all_matching_models(cars=cars, grep='trail'):
                 matchList.append(model)
     return matchList
 
-# print(get_all_matching_models())
-
+print(get_all_matching_models())
+print(get_all_matching_models(grep='CO'))
 
 def sort_car_models(cars=cars):
     """sort the car models (values) and return the resulting cars dict"""
@@ -57,4 +57,4 @@ def sort_car_models(cars=cars):
         models.sort()
     return cars
 
-print(sort_car_models())
+# print(sort_car_models())
