@@ -1,0 +1,17 @@
+# Importing unittest.mock to mock the random module 
+from unittest.mock import patch
+import random
+from guess import get_random_number, Game
+
+@patch.object(random, 'randint') #random.randint is being mocked here
+def test_get_random_number(m):
+    m.return_value = 17 # random.randint will return 17
+    assert get_random_number() == 17
+
+# The guess method in the Game class requires a user input.
+# patch can be used to define a sequence of fake user inputs
+@patch("builtins.input", side_effects=['1.1','Bob','100',29,1,1,True, None,-4,
+                                      0])
+def test_guess():
+    game = Game()
+    game()
