@@ -1,4 +1,4 @@
-import csv 
+import csv
 
 def read_rolls():
     with open('battle-table.csv') as fin:
@@ -6,6 +6,8 @@ def read_rolls():
         for row in reader:
             read_roll(row)
 
+# The ": dict" is an optional hint saying that 'row' is 
+# expected to be a dict type.
 
 def read_roll(row: dict):
     name = row['Attacker']
