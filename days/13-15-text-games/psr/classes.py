@@ -1,9 +1,21 @@
+import csv
+from collections import defaultdict
+winData = defaultdict(list) 
+
+with open('../data/battle-table.csv') as fin:
+    reader = csv.DictReader(fin)
+    for row in reader:
+        for key in row.keys():
+            if row[key]=='win':
+                winData[row['Attacker']].append(key)
+
+
 # This is the most basic version
-winData = {
-    "paper" : ["rock"],
-    "rock" : ["scissors"],
-    "scissors" : ["paper"],
-}
+# winData = {
+#     "paper" : ["rock"],
+#     "rock" : ["scissors"],
+#     "scissors" : ["paper"],
+# }
 
 class Player():
     def __init__(self, name):
