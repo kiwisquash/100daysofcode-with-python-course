@@ -1,4 +1,4 @@
-from classes import Player, Roll
+from classes import Player, Roll, winData
 import random
 
 def getPlayerName():
@@ -12,11 +12,7 @@ def gameBanner():
     print(lines)
 
 def buildRolls():
-    return [
-        Roll("paper"),
-        Roll("rock"),
-        Roll("scissors"),
-    ]
+    return [Roll(key) for key in winData.keys()]
 
 def pickPlayerHand():
     return input("Pick your hand: rock, paper, or scissors: ")
