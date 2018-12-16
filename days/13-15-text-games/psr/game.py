@@ -21,6 +21,29 @@ def buildRolls():
 def pickPlayerHand():
     return input("Pick your hand: rock, paper, or scissors: ")
 
+def gameLoop(player1, player2, rolls):
+    i = 0
+    while (i < 3):
+        p1_roll = Roll(pickPlayerHand())
+        p2_roll = random.choice(rolls)
+        if p1_roll.winsTo(p2_roll):
+            player1.victories +=1
+            print(f"Your {p1_roll.name} beats {player2.name}'s {p2_roll.name}.")
+        elif p1_roll.losesTo(p2_roll):
+            player2.victories +=1
+            print(f"Your {p1_roll.name} loses to {player2.name}'s {p2_roll.name}.")
+        else:
+            if p1_roll.name == p2_roll.name:
+                print(f"You both played {p1_roll.name}. No points awared!")
+        i += 1
+    if player1.victories > player2.victories:
+        print(f"The winner is {player1.name}!") 
+    elif player1.victories < player2.victories:
+        print(f"The winner is {player2.name}!") 
+    else:
+        print(f"""Both {player1.name} and {player2.name} have {player1.victories}
+              wins""")
+
 def main():
     gameBanner()
 
@@ -28,19 +51,9 @@ def main():
     playerName = getPlayerName()
 
     player1 = Player(playerName)
-    player2 = Player("computer")
-    i = 0
-    while (i < 3):
-        p1_roll = Roll(pickPlayerHand())
-        p2_roll = random.choice(rolls)
-        if p1_roll.winsTo(p2_roll):
-            print(f"Your {p1_roll.name} beats {player2.name}'s {p2_roll.name}.")
-        elif p1_roll.losesTo(p2_roll):
-            print(f"Your {p1_roll.name} loses to {player2.name}'s {p2_roll.name}.")
-        else:
-            if p1_roll.name == p2_roll.name:
-                print(f"You both played {p1_roll.name}. It is a draw!")
-        i += 1
+    player2 = Player("the computer")
+
+    gameLoop(player1, player2, rolls)
 
 if __name__ == "__main__":
     main()
