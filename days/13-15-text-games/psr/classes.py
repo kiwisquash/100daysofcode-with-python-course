@@ -17,7 +17,7 @@ loseData = {
 class Player():
     def __init__(self, name):
         self.name = name
-        self.victories = 0
+        self.score = 0
 
 class Roll():
     def __init__(self, name):
