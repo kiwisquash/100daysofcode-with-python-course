@@ -2,15 +2,23 @@ import time
 import itertools
 import random
 
-lights = 'green yellow red'
-lightNames = lights.split()
-light_gen = itertools.cycle(lightNames)
-while True:
-    currentLight = next(light_gen)
-    print(currentLight,end="\r")
-    if currentLight == lightNames[1]:
-        time.sleep(1)
-    else:
-        time.sleep(1+random.random()*3)
-    print("",end="\033[K")
+lights = 'green yellow red'.split()
 
+def delayTime(lightIndex):
+    if lightIndex == 1:
+        return 1
+    else:
+        return 1 + random.random()*3
+
+def turnOnLights(lights):
+    light_gen = itertools.cycle(lights)
+    for color in light_gen:
+        print(color,end="\r")
+        if color == lights[1]:
+            time.sleep(delayTime(1))
+        else:
+            time.sleep(delayTime(2))
+        print("\033[K",end="") # Erase to the end of the line 
+
+if __name__ == "__main__":
+    turnOnLights(lights)
